@@ -1,5 +1,6 @@
 class Student < ApplicationRecord
-  validates :full_name, presence: true, uniqueness: { case_sensitive: false, message: "has already been taken" },
+  validates :full_name, presence: true, 
+            # uniqueness: { case_sensitive: false, message: "has already been taken" },
             format: { with: /\A[a-zA-Z\s]+\z/, message: "can only contain letters" },
             length: { minimum: 2, maximum: 50 }
 
