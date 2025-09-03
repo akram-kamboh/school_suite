@@ -1,0 +1,7 @@
+<%= turbo_stream.update "student_form" do %>
+  <%= render "form", student: Student.new %>
+<% end %>
+
+<%= turbo_stream.update "students_table" do %>
+  <%= render partial: "students", locals: { students: @students } %>
+<% end %>

@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+<!-- Form above the grid -->
+<turbo-frame id="student_form">
+  <%= render "form", student: @student %>
+</turbo-frame>
+<!-- Students table -->
+<turbo-frame id="students_table">
+  <%= render partial: "students", locals: { students: @students } %>
+</turbo-frame>
+<%# <%= link_to "New student", new_student_path %>

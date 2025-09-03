@@ -1,0 +1,44 @@
+<%= form_with(model: student, local: false) do |form| %>
+  <% if student.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(student.errors.count, "error") %> prohibited this student from being saved:</h2>
+      <ul>
+        <% student.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="formDiv">
+    <table class="form-spacing">
+      <tr>
+        <td class="cell-one">Passing Marks:</td>
+        <td class="cell-two">60/100</td>
+      </tr>
+      <tr>
+        <td class="cell-one"><%= form.label :full_name, raw("* Full Name") %></td>
+        <td class="cell-two"><%= form.text_field :full_name, class: "big-field" %></td>
+      </tr>
+      <tr>
+        <td class="cell-one"><%= form.label :marks, raw("* Marks:") %></td>
+        <td class="cell-two"><%= form.number_field :marks, class: "big-field" %></td>
+      </tr>
+      <tr>
+        <td valign="top" class="cell-one">Fee Paid:</td>
+        <td class="two-cells">
+            <%= form.radio_button :student_type, true, id: "fee_paid_yes" %>
+            <%= form.label :fee_paid_yes, "Yes" %>
+
+            <%= form.radio_button :student_type, false, id: "fee_paid_no" %>
+            <%= form.label :fee_paid_no, "No" %>
+        </td>
+      </tr>
+      <tr>
+        <td class="cell-one">&nbsp;</td>
+        <td class="cell-two">
+          <%= form.submit "Submit Data", class: "standardButton" %>
+        </td>
+      </tr>
+    </table>
+  </div>
+<% end %>

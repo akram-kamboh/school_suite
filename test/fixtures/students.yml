@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  full_name: MyString
+  marks: 1
+  student_type: false
+
+two:
+  full_name: MyString
+  marks: 1
+  student_type: false

@@ -1,0 +1,27 @@
+<%= form_with url: delete_selected_students_path, method: :delete, data: { controller: "delete-selected", action: "submit->delete-selected#confirm" } do %>
+  <div class="main-grid">
+    <%= submit_tag "Delete", class: "standardButton" %>
+    <table class="gridTable" cellspacing="0" cellpadding="0">
+      <tr>
+        <td style="width: 20px;" class="heading-cell"&nbsp;</td>
+          <td class="heading-cell">Full Name</td>
+          <td class="heading-cell">Marks</td>
+          <td class="heading-cell">Fee Paid</td>
+          <td class="heading-cell">Pass/Fail</td>
+          <td class="heading-cell">Edit</td>
+        </tr>
+        <% @students.each do |student| 
+      pass = student.marks.to_i > 60 %>
+        <tr id="<%= dom_id student %>" class="<%= cycle('', 'alternateRowColor') %>">
+          <td class="grid-cell">
+            <%= check_box_tag "student_ids[]", student.id, false, data: { delete_selected_target: "checkbox", action: "change->delete-selected#check" } %>
+          </td>
+          <td class="grid-cell"><%= student.full_name %></td>
+          <td class="grid-cell"><%= student.marks %></td>
+          <td class="grid-cell"><%= student.student_type ? "Yes" : "No" %></td>
+          <td class="grid-cell"><span class="<%= pass ? "green" : "red" %>"><%= pass ? "Pass" : "Fail" %></span></td>
+          <td class="grid-cell"><%= link_to "Edit", edit_student_path(student, format: :turbo_stream), data: { turbo_frame: "student_form", turbo_prefetch: false } %></td>
+        <% end %>
+      </tr>
+    </div>
+  <% end %>

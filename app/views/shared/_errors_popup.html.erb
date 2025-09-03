@@ -1,0 +1,11 @@
+<div data-controller="error-popup">
+  <div data-error-popup-target="popup" class="error-modal hidden">
+    <h3>Validation Errors</h3>
+    <ul data-error-popup-target="content">
+      <% errors.each do |error| %>
+        <li><%= error %></li>
+      <% end %>
+    </ul>
+    <button class="standardButton" type="button" data-action="click->error-popup#close">Close</button>
+  </div>
+</div>
